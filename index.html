@@ -1,0 +1,1941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breast Formula Can Milk Expiration, Tracking & Feeding Log - BottleSafe</title>
+    <meta name="description" content="Discover the ultimate breast formula can milk expiration, tracking and feeding log for new parents and daycares. Free baby feeding tracker with CDC-compliant expiration calculator, consumption logging, and live countdown timers.">
+    <meta name="keywords" content="breast formula can milk expiration, baby feeding tracker, newborn feeding tracker, formula expiration dates, breast milk expiration, milk storage containers, baby growth milestones, feeding log, daycare bottle tracking, infant feeding, milk tracking app, BottleSafe">
+    <meta name="author" content="BottleSafe Team">
+    <link rel="canonical" href="https://bottlesafe.site">
+    <link rel="icon" href="logo.png" type="image/png">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "BottleSafe - Breast Formula Can Milk Expiration & Feeding Tracker",
+      "description": "The ultimate breast formula can milk expiration, tracking and feeding log for new parents and daycares. Free baby feeding tracker with CDC-compliant expiration calculator, consumption logging, and live countdown timers for managing infant feeding schedules.",
+      "url": "https://bottlesafe.site",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "BottleSafe Team"
+      },
+      "browserRequirements": "Requires JavaScript. Works on all modern browsers.",
+      "featureList": [
+        "Track baby milk bottle expiration times",
+        "CDC-compliant expiration rules",
+        "Live countdown timers with visual alerts",
+        "Consumption logging",
+        "Multiple baby management",
+        "Night mode support"
+      ]
+    }
+    </script>
+    <script>
+        // Redirect from Replit URL to custom domain
+        if (window.location.hostname.includes('replit.app')) {
+            window.location.replace('https://bottlesafe.site' + window.location.pathname);
+        }
+    </script>
+    <script>
+        // Night mode functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const nightModeEnabled = localStorage.getItem('nightMode') === 'true';
+            if (nightModeEnabled) {
+                document.body.classList.add('night-mode');
+            }
+        });
+
+        function toggleNightMode() {
+            document.body.classList.toggle('night-mode');
+            const isNightMode = document.body.classList.contains('night-mode');
+            localStorage.setItem('nightMode', isNightMode);
+            
+            // Update button emoji
+            const button = document.getElementById('nightModeToggle');
+            button.textContent = isNightMode ? '☀️' : '🌙';
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+            background: linear-gradient(135deg, #fff5f7 0%, #fff0f3 25%, #fef4e8 50%, #f0f9ff 75%, #f5f3ff 100%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        header img {
+            height: 14rem;
+            width: auto;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        header img:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-text {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            line-height: 1.1;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #1a202c;
+            margin: 0;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .forms-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .form-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .form-card h2 {
+            font-size: 1.25rem;
+            margin-bottom: 16px;
+            color: #2d3748;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: #4a5568;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            background: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #f6ad55;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(246, 173, 85, 0.1);
+        }
+
+        button {
+            background: linear-gradient(135deg, #f6ad55 0%, #ed8936 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(246, 173, 85, 0.3);
+        }
+
+        button:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(246, 173, 85, 0.4);
+        }
+
+        button:active:not(:disabled) {
+            transform: scale(0.98);
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .baby-column {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-left: 4px solid transparent;
+        }
+
+
+        .baby-header {
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .baby-name-section {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .consumption-stats {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.85rem;
+            color: #555;
+        }
+        
+        .stat-item {
+            display: inline-block;
+        }
+        
+        .reset-btn {
+            padding: 4px 10px;
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            color: #666;
+            transition: all 0.2s;
+        }
+        
+        .reset-btn:hover {
+            background-color: #e0e0e0;
+            border-color: #ccc;
+        }
+
+        .baby-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .collapse-toggle {
+            background: transparent;
+            border: 1px solid #d1d5db;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            color: #6b7280;
+            width: auto;
+            min-width: 40px;
+        }
+
+        .collapse-toggle:hover {
+            background: rgba(0, 0, 0, 0.05);
+            border-color: #9ca3af;
+        }
+
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+            padding: 5px;
+        }
+
+        .color-option {
+            display: flex;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .color-circle {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .color-option:hover .color-circle {
+            transform: scale(1.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .color-option.selected .color-circle {
+            border-color: #1a1a1a;
+            box-shadow: 0 0 0 2px white, 0 0 0 5px #1a1a1a;
+        }
+
+        .baby-tag {
+            display: inline-block;
+            margin-left: 8px;
+            padding: 4px 12px;
+            background: #e5e7eb;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .no-bottles {
+            color: #6b7280;
+            font-style: italic;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .bottle-compact {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 10px 12px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .bottle-compact.expired {
+            background: #fef2f2;
+            border-color: #fca5a5;
+        }
+
+        .bottle-compact-info {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .bottle-compact-storage {
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .bottle-card {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+
+        .bottle-card.expired {
+            background: #fef2f2;
+            border-color: #fca5a5;
+        }
+
+        .bottle-info {
+            margin-bottom: 12px;
+        }
+
+        .bottle-info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+        }
+
+        .bottle-info-label {
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        .bottle-info-value {
+            color: #1a1a1a;
+            font-weight: 500;
+        }
+
+        .countdown-pill {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-top: 8px;
+        }
+
+        .countdown-pill.safe {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .countdown-pill.warning {
+            background: #fed7aa;
+            color: #9a3412;
+        }
+
+        .countdown-pill.critical {
+            background: #fee2e2;
+            color: #991b1b;
+            animation: pulse 1s infinite;
+        }
+
+        .countdown-pill.expired {
+            background: #fee2e2;
+            color: #991b1b;
+            font-weight: 700;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .edit-btn {
+            background: transparent;
+            border: none;
+            color: #6b7280;
+            cursor: pointer;
+            padding: 4px 8px;
+            font-size: 1.1rem;
+            width: auto;
+            min-width: auto;
+        }
+
+        .edit-btn:hover {
+            color: #1a1a1a;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 4px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .close-btn {
+            background: transparent;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #6b7280;
+            padding: 0;
+            width: auto;
+            min-width: auto;
+        }
+
+        .close-btn:hover {
+            color: #1a1a1a;
+        }
+
+        .bottle-actions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .bottle-actions button {
+            padding: 8px 12px;
+            font-size: 0.85rem;
+            background: white;
+            color: #1a1a1a;
+            border: 1px solid #d1d5db;
+        }
+
+        .bottle-actions button:hover:not(:disabled) {
+            background: #f9fafb;
+            border-color: #9ca3af;
+        }
+
+        .bottle-actions button:disabled {
+            background: #e5e7eb;
+            color: #6b7280;
+            border-color: #d1d5db;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .bottle-actions button.primary {
+            background: #1a1a1a;
+            color: white;
+            border: none;
+        }
+
+        .bottle-actions button.primary:hover {
+            background: #333;
+        }
+
+        .seo-content {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+        }
+
+        .seo-content h2 {
+            color: #1a202c;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .seo-content h3 {
+            color: #2d3748;
+            font-size: 1.4rem;
+            margin: 30px 0 15px 0;
+            font-weight: 600;
+        }
+
+        .seo-content h4 {
+            color: #4a5568;
+            font-size: 1.1rem;
+            margin: 20px 0 10px 0;
+            font-weight: 600;
+        }
+
+        .seo-content p {
+            color: #4a5568;
+            margin-bottom: 15px;
+        }
+
+        .seo-content ul {
+            margin: 10px 0 20px 20px;
+            color: #4a5568;
+        }
+
+        .seo-content li {
+            margin-bottom: 8px;
+        }
+
+        .seo-content strong {
+            color: #2d3748;
+            font-weight: 600;
+        }
+
+        .disclaimer {
+            max-width: 1200px;
+            margin: 40px auto 20px;
+            padding: 20px;
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            border-radius: 8px;
+        }
+
+        .disclaimer h3 {
+            margin: 0 0 10px 0;
+            color: #92400e;
+            font-size: 1.1rem;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            color: #78350f;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .donate-section {
+            text-align: center;
+            padding: 15px 20px;
+            margin: 10px auto;
+            max-width: 600px;
+        }
+
+        .coffee-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #FFDD00;
+            color: #000000;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border: 2px solid #000000;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .coffee-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .coffee-emoji {
+            font-size: 1.3rem;
+        }
+
+        #feedbackModal .modal-content {
+            max-width: 500px;
+        }
+
+        #feedbackModal form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        #feedbackModal textarea {
+            resize: vertical;
+            min-height: 80px;
+            width: 100%;
+            font-family: inherit;
+        }
+
+        #feedbackModal input[type="text"],
+        #feedbackModal input[type="email"] {
+            width: 100%;
+        }
+
+        .night-mode-toggle,
+        .instructions-button,
+        .feedback-button {
+            position: fixed;
+            top: 20px;
+            background: #1a1a1a;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .night-mode-toggle {
+            right: 20px;
+        }
+
+        .instructions-button {
+            right: 80px;
+        }
+
+        .feedback-button {
+            right: 140px;
+        }
+
+        .night-mode-toggle:hover,
+        .instructions-button:hover,
+        .feedback-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        body.night-mode {
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #1e3a5f 100%);
+            color: #e5e7eb;
+        }
+
+        body.night-mode h1,
+        body.night-mode h2,
+        body.night-mode h3 {
+            color: #ffffff;
+        }
+
+        body.night-mode .logo-text {
+            color: #e5e7eb;
+        }
+
+        body.night-mode .form-card,
+        body.night-mode .baby-column {
+            background: rgba(45, 55, 72, 0.95);
+            backdrop-filter: blur(10px);
+            color: #e5e7eb;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        body.night-mode input,
+        body.night-mode select {
+            background: rgba(45, 55, 72, 0.7);
+            color: #e5e7eb;
+            border-color: #4a5568;
+        }
+
+        body.night-mode input:focus,
+        body.night-mode select:focus {
+            border-color: #f6ad55;
+            background: rgba(45, 55, 72, 0.9);
+            box-shadow: 0 0 0 3px rgba(246, 173, 85, 0.2);
+        }
+
+        body.night-mode label {
+            color: #d1d5db;
+        }
+
+        body.night-mode .baby-name {
+            color: #e5e7eb;
+        }
+
+        body.night-mode .consumption-stats {
+            color: #d1d5db;
+        }
+
+        body.night-mode .stat-item {
+            color: #d1d5db;
+        }
+
+        body.night-mode .reset-btn {
+            background-color: #4a5568;
+            border-color: #4a5568;
+            color: #d1d5db;
+        }
+
+        body.night-mode .reset-btn:hover {
+            background-color: #5a6678;
+            border-color: #5a6678;
+        }
+
+        body.night-mode .baby-header {
+            border-bottom-color: #444;
+        }
+
+        body.night-mode .seo-content {
+            background: rgba(45, 55, 72, 0.95);
+            border-color: #4a5568;
+        }
+
+        body.night-mode .seo-content h2 {
+            color: #f9fafb;
+        }
+
+        body.night-mode .seo-content h3 {
+            color: #e5e7eb;
+        }
+
+        body.night-mode .seo-content h4 {
+            color: #d1d5db;
+        }
+
+        body.night-mode .seo-content p,
+        body.night-mode .seo-content li {
+            color: #d1d5db;
+        }
+
+        body.night-mode .seo-content strong {
+            color: #f9fafb;
+        }
+
+        body.night-mode .disclaimer {
+            background: rgba(45, 55, 72, 0.95);
+            border-left-color: #f6ad55;
+        }
+
+        body.night-mode .disclaimer h3 {
+            color: #fbbf24;
+        }
+
+        body.night-mode .disclaimer p {
+            color: #d1d5db;
+        }
+
+
+        body.night-mode .bottle-card {
+            background: rgba(55, 65, 82, 0.8);
+            border-color: #4a5568;
+        }
+
+        body.night-mode .bottle-info-label {
+            color: #9ca3af;
+        }
+
+        body.night-mode .bottle-info-value {
+            color: #e5e7eb;
+        }
+
+        body.night-mode .countdown-pill.safe {
+            background: #065f46;
+            color: #d1fae5;
+        }
+
+        body.night-mode .countdown-pill.warning {
+            background: #9a3412;
+            color: #fed7aa;
+        }
+
+        body.night-mode .countdown-pill.critical {
+            background: #991b1b;
+            color: #fee2e2;
+        }
+
+        body.night-mode .countdown-pill.expired {
+            background: #991b1b;
+            color: #fee2e2;
+        }
+
+        body.night-mode .bottle-actions button {
+            background: #444;
+            color: #e5e5e5;
+            border-color: #555;
+        }
+
+        body.night-mode .bottle-actions button:hover:not(:disabled) {
+            background: #555;
+        }
+
+        body.night-mode .bottle-actions button:disabled {
+            background: #374151;
+            color: #6b7280;
+            border-color: #4b5563;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        body.night-mode .bottle-actions button.primary {
+            background: #3b82f6;
+            color: white;
+        }
+
+        body.night-mode .bottle-actions button.primary:hover {
+            background: #2563eb;
+        }
+
+        body.night-mode .modal-content {
+            background: rgba(45, 55, 72, 0.98);
+            color: #e5e7eb;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        body.night-mode .close-btn {
+            color: #d1d5db;
+        }
+
+        body.night-mode .close-btn:hover {
+            color: #ffffff;
+        }
+
+        body.night-mode .night-mode-toggle,
+        body.night-mode .instructions-button,
+        body.night-mode .feedback-button {
+            background: linear-gradient(135deg, #f6ad55 0%, #ed8936 100%);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .night-mode-toggle {
+                top: 5px;
+                right: 5px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+                padding: 8px;
+            }
+
+            .instructions-button {
+                top: 5px;
+                right: 50px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+                padding: 8px;
+            }
+
+            .feedback-button {
+                top: 5px;
+                right: 95px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+                padding: 8px;
+            }
+            body {
+                padding: 0px;
+            }
+
+            header {
+                flex-direction: column;
+                gap: 5px;
+                margin-bottom: 0;
+                padding: 0 8px 0 8px;
+            }
+
+            header img {
+                height: 10rem;
+                margin: 0 auto;
+            }
+
+            .logo-text {
+                font-size: 1.8rem;
+            }
+
+            h1 {
+                font-size: 1.4rem;
+                line-height: 1.25;
+                text-align: center;
+                word-wrap: break-word;
+                margin: 0;
+            }
+
+            #about-bottlesafe {
+                padding: 10px 8px !important;
+                margin: 0 0 15px 0 !important;
+            }
+
+            #about-bottlesafe h2 {
+                font-size: 1rem;
+                margin-bottom: 8px;
+            }
+
+            #about-bottlesafe p {
+                font-size: 0.85rem;
+                line-height: 1.4;
+            }
+
+            #about-bottlesafe p br {
+                display: none;
+            }
+
+            .dashboard {
+                grid-template-columns: 1fr;
+                padding: 0 8px;
+            }
+
+            .forms-section {
+                grid-template-columns: 1fr;
+                padding: 0 8px;
+            }
+
+            .form-card {
+                padding: 16px;
+            }
+
+            .form-card h2 {
+                font-size: 1.1rem;
+            }
+
+            .coffee-button {
+                font-size: 0.9rem;
+                padding: 10px 20px;
+            }
+
+            .seo-content {
+                margin: 20px 8px;
+                padding: 20px 15px;
+            }
+
+            .seo-content h2 {
+                font-size: 1.3rem;
+                margin-bottom: 15px;
+            }
+
+            .seo-content h3 {
+                font-size: 1.1rem;
+                margin: 20px 0 10px 0;
+            }
+
+            .seo-content h4 {
+                font-size: 1rem;
+                margin: 15px 0 8px 0;
+            }
+
+            .seo-content p {
+                font-size: 0.9rem;
+            }
+
+            .seo-content ul {
+                font-size: 0.9rem;
+                margin-left: 15px;
+            }
+
+            .disclaimer {
+                padding: 15px;
+                margin: 30px 8px 20px;
+            }
+
+            .disclaimer h3 {
+                font-size: 1rem;
+            }
+
+            .disclaimer p {
+                font-size: 0.85rem;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <button id="nightModeToggle" class="night-mode-toggle" onclick="toggleNightMode()" aria-label="Toggle Night Mode">🌙</button>
+    <button class="feedback-button" onclick="openFeedback()" aria-label="Send Feedback">💬</button>
+    <button class="instructions-button" onclick="openInstructions()" aria-label="How to Use">❓</button>
+    
+    <header>
+        <img src="logo.png" alt="BottleSafe Logo" onclick="scrollToTop()" title="Back to top">
+        <h1>Baby Milk Expiration, Calculator, Tracker & Feeding Log</h1>
+    </header>
+
+    <section id="about-bottlesafe" style="text-align:center; padding:20px;">
+        <h2>About BottleSafe</h2>
+        <p>
+            <strong>BottleSafe</strong> is a free, simple one-page tool to calculate and track baby milk expiration times and feeding logs.<br>
+            Perfect for daily use by parents and daycare teachers managing multiple babies.<br>
+            Stay organized, reduce waste, and keep every bottle safe and fresh!
+        </p>
+    </section>
+
+    <div class="forms-section">
+        <div class="form-card">
+            <h2>Add Baby</h2>
+            <form id="addBabyForm">
+                <div class="form-group">
+                    <label for="babyName">Baby Name *</label>
+                    <input type="text" id="babyName" required>
+                </div>
+                <div class="form-group">
+                    <label for="colorTag">Color Tag (optional)</label>
+                    <input type="hidden" id="colorTag" value="">
+                    <div class="color-palette">
+                        <!-- Red (Light, Medium, Dark) -->
+                        <div class="color-option" data-color="#FFCDD2"><div class="color-circle" style="background: #FFCDD2;"></div></div>
+                        <div class="color-option" data-color="#F44336"><div class="color-circle" style="background: #F44336;"></div></div>
+                        <div class="color-option" data-color="#C62828"><div class="color-circle" style="background: #C62828;"></div></div>
+                        
+                        <!-- Orange (Light, Medium, Dark) -->
+                        <div class="color-option" data-color="#FFE0B2"><div class="color-circle" style="background: #FFE0B2;"></div></div>
+                        <div class="color-option" data-color="#FF9800"><div class="color-circle" style="background: #FF9800;"></div></div>
+                        <div class="color-option" data-color="#E65100"><div class="color-circle" style="background: #E65100;"></div></div>
+                        
+                        <!-- Yellow (Light, Medium, Dark) -->
+                        <div class="color-option" data-color="#FFF9C4"><div class="color-circle" style="background: #FFF9C4;"></div></div>
+                        <div class="color-option" data-color="#FFEB3B"><div class="color-circle" style="background: #FFEB3B;"></div></div>
+                        <div class="color-option" data-color="#F57F17"><div class="color-circle" style="background: #F57F17;"></div></div>
+                        
+                        <!-- Green (Light, Medium, Dark) -->
+                        <div class="color-option" data-color="#C8E6C9"><div class="color-circle" style="background: #C8E6C9;"></div></div>
+                        <div class="color-option" data-color="#4CAF50"><div class="color-circle" style="background: #4CAF50;"></div></div>
+                        <div class="color-option" data-color="#1B5E20"><div class="color-circle" style="background: #1B5E20;"></div></div>
+                        
+                        <!-- Blue (Light, Medium, Dark) -->
+                        <div class="color-option" data-color="#BBDEFB"><div class="color-circle" style="background: #BBDEFB;"></div></div>
+                        <div class="color-option" data-color="#2196F3"><div class="color-circle" style="background: #2196F3;"></div></div>
+                        <div class="color-option" data-color="#0D47A1"><div class="color-circle" style="background: #0D47A1;"></div></div>
+                        
+                        <!-- Purple (Light, Medium, Dark) -->
+                        <div class="color-option" data-color="#E1BEE7"><div class="color-circle" style="background: #E1BEE7;"></div></div>
+                        <div class="color-option" data-color="#9C27B0"><div class="color-circle" style="background: #9C27B0;"></div></div>
+                        <div class="color-option" data-color="#4A148C"><div class="color-circle" style="background: #4A148C;"></div></div>
+                        
+                        <!-- Pink (Light, Medium, Dark) -->
+                        <div class="color-option" data-color="#F8BBD0"><div class="color-circle" style="background: #F8BBD0;"></div></div>
+                        <div class="color-option" data-color="#E91E63"><div class="color-circle" style="background: #E91E63;"></div></div>
+                        <div class="color-option" data-color="#880E4F"><div class="color-circle" style="background: #880E4F;"></div></div>
+                    </div>
+                </div>
+                <button type="submit">Add Baby</button>
+            </form>
+        </div>
+
+        <div class="form-card">
+            <h2>Add Bottle</h2>
+            <form id="addBottleForm">
+                <div class="form-group">
+                    <label for="bottleBaby">Baby *</label>
+                    <select id="bottleBaby" required>
+                        <option value="">(add a baby first)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="milkType">Milk Type *</label>
+                    <select id="milkType" required>
+                        <option value="formula">Formula</option>
+                        <option value="breast">Breast (Fresh)</option>
+                        <option value="thawed">Thawed Breast Milk</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="storage">Storage *</label>
+                    <select id="storage" required>
+                        <option value="room">Room</option>
+                        <option value="fridge">Fridge</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="ounces">Ounces *</label>
+                    <input type="number" id="ounces" min="0.5" max="20" step="0.5" value="4" required>
+                </div>
+                <div class="form-group">
+                    <label for="startTime">Start Time *</label>
+                    <input type="datetime-local" id="startTime" required>
+                </div>
+                <button type="submit">Add Bottle</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="dashboard" class="dashboard"></div>
+
+    <div class="donate-section">
+        <a href="https://buymeacoffee.com/bottlesafe" target="_blank" rel="noopener noreferrer" class="coffee-button">
+            <span class="coffee-emoji">☕</span>
+            <span>Buy Me a Coffee</span>
+        </a>
+    </div>
+
+    <section class="seo-content">
+        <h2>Discover the Ultimate Breast Formula Can Milk Expiration, Tracking and Feeding Log for New Parents and Daycares</h2>
+        <p>Navigating the world of infant feeding can be overwhelming for new parents and daycare providers. Understanding breast formula can milk expiration, tracking feeding schedules, and monitoring baby growth milestones are crucial for ensuring a baby's health and safety. This guide offers essential insights into managing formula expiration dates and creating effective feeding logs. With the right tools and knowledge, you can confidently support your baby's nutritional needs and growth journey.</p>
+
+        <h3>Importance of Monitoring Milk Expiration</h3>
+        <p>Regularly checking milk expiration ensures safety and nutrition for infants. Expired formula can pose health risks to babies. Key reasons to monitor expiration include:</p>
+        <ul>
+            <li>Protecting against spoilage and contamination</li>
+            <li>Maintaining optimal nutrition</li>
+            <li>Ensuring compliance with health guidelines</li>
+        </ul>
+
+        <h3>Overview of Breast Formula and Its Alternatives</h3>
+        <p>Choosing the best option for baby feeding involves understanding both formula and its alternatives. Each choice offers unique benefits depending on individual needs:</p>
+        <ul>
+            <li>Regular infant formula</li>
+            <li>Organic formula</li>
+            <li>Goat milk-based formula</li>
+            <li>Soy-based alternatives</li>
+        </ul>
+
+        <h3>Understanding Milk Expiration</h3>
+        <p>Milk expiration dates are crucial for ensuring your baby's safety. Proper understanding helps prevent health issues and ensures quality feeding.</p>
+
+        <h4>How Formula Expiration Dates Work</h4>
+        <p>Formula expiration dates indicate the last safe day for consumption. They account for nutrient stability and bacterial safety.</p>
+        <ul>
+            <li>Check the "Use By" date</li>
+            <li>Store unopened cans properly</li>
+            <li>Discard expired formula promptly</li>
+        </ul>
+
+        <h4>Shelf Life of Different Formulas</h4>
+        <p>Different formulas have different shelf lives. Check labels for specific periods. Storage conditions and formula type affect expiration dates. Always follow manufacturer guidelines.</p>
+
+        <h4>Breast Milk vs. Formula Expiration</h4>
+        <p>Breast milk and formula have distinct shelf life durations. Understand these to avoid waste and ensure safe feeding.</p>
+        <p><strong>Freshness of breast milk:</strong> Fresh breast milk lasts four days in the fridge. Use within this period for best quality.</p>
+        <p><strong>Storage guidelines for breast milk alternatives:</strong> Alternative milk requires careful handling. Use airtight containers, refrigerate promptly, and label with the date.</p>
+
+        <h3>Implementing a Feeding Tracker</h3>
+        <p>Introducing a feeding tracker helps parents and caregivers monitor feeding patterns. This can support healthier growth for your baby.</p>
+
+        <h4>Benefits of Using a Newborn Feeding Tracker</h4>
+        <p>A newborn feeding tracker simplifies the monitoring of your baby's intake:</p>
+        <ul>
+            <li>Helps maintain regular schedules</li>
+            <li>Monitors consumption amounts</li>
+            <li>Tracks feeding intervals</li>
+        </ul>
+
+        <h4>Tracking Feeding Schedules</h4>
+        <p>Keep a consistent feeding schedule to support baby development. Recording formula and breast milk consumption by logging intake amounts accurately for each type of milk.</p>
+
+        <h4>Best Practices for Tracking Infant Feeding</h4>
+        <p>Optimize your feeding tracker by incorporating these practices:</p>
+        <ul>
+            <li>Record times and quantities</li>
+            <li>Review data regularly</li>
+            <li>Adjust schedules when necessary</li>
+        </ul>
+
+        <p><strong>Using a baby feeding app:</strong> A baby feeding app can simplify feeding logs with automated reminders. Label milk storage containers with dates for better organization.</p>
+
+        <h3>Managing Feeding Logs</h3>
+        <p>Keeping detailed feeding logs is crucial for understanding your baby's needs. It ensures you're prepared for consultations with healthcare professionals.</p>
+
+        <h4>Creating an Effective Feeding Log</h4>
+        <p>An effective feeding log should be comprehensive and easy to update:</p>
+        <ul>
+            <li>Include feeding times and durations</li>
+            <li>Note types of milk used</li>
+            <li>Record any feeding issues</li>
+        </ul>
+
+        <p><strong>Essential details to record:</strong> Always log the time, milk type, and quantity for each feeding session. Monitor your baby's progress and note any significant changes in growth patterns.</p>
+
+        <h4>Importance of Consistency in Feeding Logs</h4>
+        <p>Consistency in feeding logs provides valuable insights into your baby's health:</p>
+        <ul>
+            <li>Review and update logs daily</li>
+            <li>Communicate any changes promptly</li>
+            <li>Maintain regular tracking routines</li>
+        </ul>
+
+        <p><strong>Keeping caregivers informed:</strong> Regularly share the feeding log details with all caregivers to ensure uniform care. Modify feeding schedules based on your baby's growth and changing needs.</p>
+
+        <h3>Conclusion: Embrace Digital Tools for Better Infant Care</h3>
+        <p>Managing feeding practices is vital for your baby's health and safety. Tracking milk expiration and feeding schedules ensures nutritional safety and supports healthy growth. New parents and daycares should embrace digital tools and logs to simplify feeding management and improve infant care.</p>
+    </section>
+
+    <div class="disclaimer">
+        <h3>Disclaimer</h3>
+        <p>BottleSafe is a tool to help parents, caregivers, and daycare providers track milk storage and expiration times based on general health guidelines. It does not replace professional medical advice or childcare safety standards. Always follow your pediatrician's or healthcare provider's recommendations for preparing, storing, and using milk. BottleSafe and its creators are not responsible for any outcomes resulting from reliance on this tool.</p>
+    </div>
+
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Bottle</h2>
+                <button class="close-btn" onclick="closeEditModal()">&times;</button>
+            </div>
+            <form id="editBottleForm">
+                <input type="hidden" id="editBottleId">
+                <div class="form-group">
+                    <label for="editMilkType">Milk Type *</label>
+                    <select id="editMilkType" required>
+                        <option value="formula">Formula</option>
+                        <option value="breast">Breast (Fresh)</option>
+                        <option value="thawed">Thawed Breast Milk</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="editOunces">Ounces *</label>
+                    <input type="number" id="editOunces" min="0.5" max="20" step="0.5" required>
+                </div>
+                <div class="form-group">
+                    <label for="editStartTime">Start Time *</label>
+                    <input type="datetime-local" id="editStartTime" required>
+                </div>
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="feedbackModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>💬 Send Feedback</h2>
+                <button class="close-btn" onclick="closeFeedback()">&times;</button>
+            </div>
+            <form id="feedbackForm" action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="b8a67c31-5e0b-4b20-aff8-1981c8ad6b96">
+                <input type="hidden" name="subject" value="BottleSafe Feedback">
+                <input type="hidden" name="redirect" value="https://bottlesafe.site">
+                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                
+                <div class="form-group">
+                    <label for="feedbackName">Name (optional)</label>
+                    <input type="text" id="feedbackName" name="name" placeholder="Your name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="feedbackEmail">Email (optional)</label>
+                    <input type="email" id="feedbackEmail" name="email" placeholder="your@email.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="feedbackMessage">Message *</label>
+                    <textarea id="feedbackMessage" name="message" rows="4" placeholder="Your feedback, suggestions, or bug reports..." required></textarea>
+                </div>
+                
+                <button type="submit">Send Feedback</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="instructionsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📖 How to Use BottleSafe</h2>
+                <button class="close-btn" onclick="closeInstructions()">&times;</button>
+            </div>
+            <div style="line-height: 1.8; max-height: 500px; overflow-y: auto;">
+                <h3 style="margin-top: 0; color: #f6ad55;">🍼 Getting Started</h3>
+                <ol style="margin-left: 20px;">
+                    <li><strong>Add a Baby:</strong> Enter the baby's name and optionally choose a color tag for easy identification.</li>
+                    <li><strong>Add a Bottle:</strong> Select the baby, milk type (Formula, Breast, or Thawed), storage location (Room or Fridge), ounces, and start time.</li>
+                </ol>
+
+                <h3 style="color: #f6ad55;">⏱️ Tracking Bottles</h3>
+                <ul style="margin-left: 20px;">
+                    <li><strong>Live Countdown:</strong> Each bottle shows a real-time countdown timer.</li>
+                    <li><strong>Color Alerts:</strong>
+                        <ul>
+                            <li>🟢 <strong>Green:</strong> Safe (more than 30 min remaining)</li>
+                            <li>🟠 <strong>Orange:</strong> Warning (less than 30 min remaining)</li>
+                            <li>🔴 <strong>Red:</strong> Critical (less than 5 min or expired)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Sound Alarm:</strong> A beeping sound plays when bottles expire.</li>
+                </ul>
+
+                <h3 style="color: #f6ad55;">🔄 Moving Bottles</h3>
+                <ul style="margin-left: 20px;">
+                    <li><strong>Move to Fridge/Room:</strong> Click buttons to change storage location.</li>
+                    <li><strong>Cumulative Tracking:</strong> The app tracks total time at room temperature:
+                        <ul>
+                            <li>Breast milk: 4 hours total at room temp</li>
+                            <li>Formula: 2 hours total at room temp</li>
+                            <li>Thawed: 2 hours total at room temp</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3 style="color: #f6ad55;">✅ Managing Bottles</h3>
+                <ul style="margin-left: 20px;">
+                    <li><strong>Mark Fed:</strong> Logs the bottle as consumed and tracks feeding amounts.</li>
+                    <li><strong>Discard:</strong> Removes expired or unused bottles.</li>
+                    <li><strong>Edit:</strong> Click the ✏️ icon to modify bottle details.</li>
+                    <li><strong>Reset:</strong> Click "Reset" to clear a baby's consumption log.</li>
+                </ul>
+
+                <h3 style="color: #f6ad55;">🌙 Night Mode</h3>
+                <p>Click the 🌙 button (top-right) to toggle dark mode for nighttime feeding.</p>
+
+                <h3 style="color: #f6ad55;">📋 CDC Guidelines</h3>
+                <ul style="margin-left: 20px;">
+                    <li>Formula @ Room: 2 hours | @ Fridge: 24 hours</li>
+                    <li>Breast Milk @ Room: 4 hours | @ Fridge: 96 hours (4 days)</li>
+                    <li>Thawed @ Room: 2 hours | @ Fridge: 24 hours</li>
+                </ul>
+
+                <p style="margin-top: 20px; padding: 12px; background: #fef3c7; border-radius: 8px; font-size: 0.9rem;">
+                    <strong>💡 Tip:</strong> All data is saved locally in your browser. Clear browser data to reset the app.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let babies = [];
+        let bottles = [];
+        let collapsedBabies = {};
+        let consumptionLog = [];
+        let alarmPlayed = new Set();
+
+        function generateId() {
+            return Math.random().toString(36).substr(2, 9);
+        }
+
+        function hexToRGBA(hex, alpha) {
+            const r = parseInt(hex.slice(1, 3), 16);
+            const g = parseInt(hex.slice(3, 5), 16);
+            const b = parseInt(hex.slice(5, 7), 16);
+            return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+        }
+
+        function toggleCollapse(babyId) {
+            collapsedBabies[babyId] = !collapsedBabies[babyId];
+            updateDashboard();
+        }
+        
+        function resetConsumption(babyId) {
+            const baby = babies.find(b => b.id === babyId);
+            if (baby && confirm(`Reset consumption log for ${baby.name}?`)) {
+                const indexesToRemove = [];
+                consumptionLog.forEach((log, index) => {
+                    if (log.babyId === babyId) {
+                        indexesToRemove.push(index);
+                    }
+                });
+                for (let i = indexesToRemove.length - 1; i >= 0; i--) {
+                    consumptionLog.splice(indexesToRemove[i], 1);
+                }
+                renderAll();
+            }
+        }
+
+        function getCurrentTimeForInput() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            return `${year}-${month}-${day}T${hours}:${minutes}`;
+        }
+
+        function calcExpiry(milkType, storage, startTimeISO, nowForWarmed = null) {
+            if (nowForWarmed) {
+                const warmTime = new Date(nowForWarmed);
+                warmTime.setHours(warmTime.getHours() + 1);
+                return warmTime;
+            }
+
+            const startTime = new Date(startTimeISO);
+            const expiry = new Date(startTime);
+
+            if (milkType === 'formula') {
+                if (storage === 'room') {
+                    expiry.setHours(expiry.getHours() + 2);
+                } else {
+                    expiry.setHours(expiry.getHours() + 24);
+                }
+            } else if (milkType === 'breast') {
+                if (storage === 'room') {
+                    expiry.setHours(expiry.getHours() + 4);
+                } else {
+                    expiry.setHours(expiry.getHours() + 96);
+                }
+            } else if (milkType === 'thawed') {
+                if (storage === 'room') {
+                    expiry.setHours(expiry.getHours() + 2);
+                } else {
+                    expiry.setHours(expiry.getHours() + 24);
+                }
+            }
+
+            return expiry;
+        }
+
+        function moveBottleToStorage(bottleId, newStorage) {
+            const bottle = bottles.find(b => b.id === bottleId);
+            if (!bottle) return;
+
+            const previousStorage = bottle.currentStorage;
+            bottle.currentStorage = newStorage;
+            const now = new Date();
+
+            // Initialize tracking fields if they don't exist
+            if (bottle.roomTempTimeSpent === undefined) {
+                bottle.roomTempTimeSpent = 0;
+            }
+            if (bottle.lastRoomTempStart === undefined) {
+                bottle.lastRoomTempStart = null;
+            }
+
+            if (previousStorage === 'fridge' && newStorage === 'room') {
+                // Moving from Fridge to Room - Resume cumulative room temp countdown for ALL milk types
+                const roomTempSpentMs = bottle.roomTempTimeSpent;
+                
+                // Different total room temp limits for each milk type
+                let totalRoomTempMs;
+                if (bottle.milkType === 'breast') {
+                    totalRoomTempMs = 4 * 60 * 60 * 1000; // 4 hours
+                } else {
+                    totalRoomTempMs = 2 * 60 * 60 * 1000; // 2 hours for formula/thawed
+                }
+                
+                const remainingRoomTempMs = totalRoomTempMs - roomTempSpentMs;
+                
+                console.log('==========================================');
+                console.log(`Moving ${bottle.milkType} milk from fridge to room:`);
+                console.log('  Bottle ID:', bottle.id);
+                console.log('  roomTempTimeSpent:', bottle.roomTempTimeSpent);
+                console.log('  Time spent at room temp so far:', roomTempSpentMs / 1000 / 60, 'minutes');
+                console.log('  Total room temp allowed:', totalRoomTempMs / 1000 / 60, 'minutes');
+                console.log('  Remaining room temp time:', remainingRoomTempMs / 1000 / 60, 'minutes');
+                console.log('  New expiry will be:', new Date(now.getTime() + remainingRoomTempMs));
+                console.log('==========================================');
+                
+                if (remainingRoomTempMs > 0) {
+                    bottle.expiryTimeISO = new Date(now.getTime() + remainingRoomTempMs).toISOString();
+                    bottle.lastRoomTempStart = now.toISOString();
+                } else {
+                    // Already used up all room temp time
+                    bottle.expiryTimeISO = now.toISOString();
+                }
+            } else if (previousStorage === 'room' && newStorage === 'fridge') {
+                // Moving from Room to Fridge - Track cumulative room time for ALL milk types
+                const lastStart = bottle.lastRoomTempStart ? new Date(bottle.lastRoomTempStart) : new Date(bottle.startTimeISO);
+                const timeSpentMs = now - lastStart;
+                bottle.roomTempTimeSpent = bottle.roomTempTimeSpent + timeSpentMs;
+                bottle.lastRoomTempStart = null;
+                
+                console.log('==========================================');
+                console.log(`Moving ${bottle.milkType} milk from room to fridge:`);
+                console.log('  Bottle ID:', bottle.id);
+                console.log('  lastRoomTempStart was:', bottle.lastRoomTempStart);
+                console.log('  Time just spent at room:', timeSpentMs / 1000 / 60, 'minutes');
+                console.log('  Total time spent at room temp:', bottle.roomTempTimeSpent / 1000 / 60, 'minutes');
+                console.log('==========================================');
+                
+                // Recalculate based on original start time and fridge rules
+                bottle.expiryTimeISO = calcExpiry(bottle.milkType, newStorage, bottle.startTimeISO, null).toISOString();
+            }
+
+            renderAll();
+        }
+
+        function remainingSeconds(expiryTimeISO) {
+            const now = new Date();
+            const expiry = new Date(expiryTimeISO);
+            return Math.floor((expiry - now) / 1000);
+        }
+
+        function formatTimeRemaining(seconds) {
+            if (seconds <= 0) {
+                return 'EXPIRED';
+            }
+
+            const hours = Math.floor(seconds / 3600);
+            const minutes = Math.floor((seconds % 3600) / 60);
+            const secs = seconds % 60;
+
+            if (hours > 0) {
+                return `${hours}h ${minutes}m left`;
+            } else if (minutes > 0) {
+                return `${minutes}m ${secs}s left`;
+            } else {
+                return `${secs}s left`;
+            }
+        }
+
+        function formatDisplayTime(dateOrISO) {
+            const date = typeof dateOrISO === 'string' ? new Date(dateOrISO) : dateOrISO;
+            const options = { 
+                month: 'short', 
+                day: 'numeric', 
+                hour: 'numeric', 
+                minute: '2-digit',
+                hour12: true 
+            };
+            return date.toLocaleString('en-US', options);
+        }
+
+        function getCountdownClass(seconds) {
+            if (seconds <= 0) return 'expired';
+            if (seconds <= 10 * 60) return 'critical';
+            if (seconds <= 30 * 60) return 'warning';
+            return 'safe';
+        }
+
+        function playAlarm() {
+            const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+Hut2QdBjiS2PDMeywFJXfH8N+PRFGF8');
+            audio.play().catch(e => console.log('Audio blocked:', e));
+        }
+
+        function markBottle(bottleId, status) {
+            const bottle = bottles.find(b => b.id === bottleId);
+            if (bottle) {
+                const baby = babies.find(b => b.id === bottle.babyId);
+                let amountConsumed = bottle.ounces;
+                
+                const promptText = status === 'used' 
+                    ? `How many ounces were LEFT in the bottle? (Current: ${bottle.ounces} oz)\nEnter 0 if baby drank it all.`
+                    : `How many ounces were LEFT in the bottle? (Current: ${bottle.ounces} oz)\nEnter 0 if all was consumed.`;
+                
+                const remaining = prompt(promptText);
+                if (remaining !== null && remaining !== '') {
+                    const remainingOz = parseFloat(remaining);
+                    if (!isNaN(remainingOz) && remainingOz >= 0 && remainingOz <= bottle.ounces) {
+                        amountConsumed = bottle.ounces - remainingOz;
+                        
+                        // Log the consumption
+                        consumptionLog.push({
+                            id: generateId(),
+                            babyId: bottle.babyId,
+                            babyName: baby ? baby.name : 'Unknown',
+                            milkType: bottle.milkType,
+                            ounces: amountConsumed,
+                            originalOunces: bottle.ounces,
+                            action: status,
+                            timestamp: new Date().toISOString()
+                        });
+                        
+                        // Update bottle's remaining ounces for "Mark Fed"
+                        // This ensures next feeding uses correct base amount
+                        if (status === 'used') {
+                            bottle.ounces = remainingOz;
+                        }
+                        
+                        // Only set status to 'discarded' if discarding
+                        // Keep bottle active if marking as fed so countdown continues
+                        if (status === 'discarded') {
+                            bottle.status = status;
+                        }
+                        
+                        renderAll();
+                    }
+                } else {
+                    return;
+                }
+            }
+        }
+
+        function openEditModal(bottleId) {
+            const bottle = bottles.find(b => b.id === bottleId);
+            if (!bottle) return;
+            
+            document.getElementById('editBottleId').value = bottleId;
+            document.getElementById('editMilkType').value = bottle.milkType;
+            document.getElementById('editOunces').value = bottle.ounces;
+            
+            const startDate = new Date(bottle.startTimeISO);
+            const year = startDate.getFullYear();
+            const month = String(startDate.getMonth() + 1).padStart(2, '0');
+            const day = String(startDate.getDate()).padStart(2, '0');
+            const hours = String(startDate.getHours()).padStart(2, '0');
+            const minutes = String(startDate.getMinutes()).padStart(2, '0');
+            document.getElementById('editStartTime').value = `${year}-${month}-${day}T${hours}:${minutes}`;
+            
+            document.getElementById('editModal').classList.add('show');
+        }
+
+        function closeEditModal() {
+            document.getElementById('editModal').classList.remove('show');
+        }
+
+        function openInstructions() {
+            document.getElementById('instructionsModal').classList.add('show');
+        }
+
+        function closeInstructions() {
+            document.getElementById('instructionsModal').classList.remove('show');
+        }
+
+        function openFeedback() {
+            document.getElementById('feedbackModal').classList.add('show');
+        }
+
+        function closeFeedback() {
+            document.getElementById('feedbackModal').classList.remove('show');
+        }
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        window.onclick = function(event) {
+            const editModal = document.getElementById('editModal');
+            const instructionsModal = document.getElementById('instructionsModal');
+            const feedbackModal = document.getElementById('feedbackModal');
+            
+            if (event.target === editModal) {
+                closeEditModal();
+            }
+            if (event.target === instructionsModal) {
+                closeInstructions();
+            }
+            if (event.target === feedbackModal) {
+                closeFeedback();
+            }
+        }
+
+        document.getElementById('editBottleForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const bottleId = document.getElementById('editBottleId').value;
+            const bottle = bottles.find(b => b.id === bottleId);
+            if (!bottle) return;
+            
+            const milkType = document.getElementById('editMilkType').value;
+            const ounces = parseFloat(document.getElementById('editOunces').value);
+            const startTime = document.getElementById('editStartTime').value;
+            const startTimeISO = new Date(startTime).toISOString();
+            
+            bottle.milkType = milkType;
+            bottle.ounces = ounces;
+            bottle.startTimeISO = startTimeISO;
+            bottle.expiryTimeISO = calcExpiry(milkType, bottle.currentStorage, startTimeISO, null).toISOString();
+            
+            closeEditModal();
+            renderAll();
+        });
+
+        function updateBabyDropdown() {
+            const babySelect = document.getElementById('bottleBaby');
+            const currentValue = babySelect.value;
+            
+            babySelect.innerHTML = babies.length === 0 
+                ? '<option value="">(add a baby first)</option>'
+                : '<option value="">Select a baby</option>' + 
+                  babies.map(b => `<option value="${b.id}">${b.name}</option>`).join('');
+            babySelect.disabled = babies.length === 0;
+            
+            if (currentValue && babies.some(b => b.id === currentValue)) {
+                babySelect.value = currentValue;
+            }
+        }
+
+        function updateDashboard() {
+            const dashboard = document.getElementById('dashboard');
+            
+            if (babies.length === 0) {
+                dashboard.innerHTML = '<div class="baby-column"><p class="no-bottles">Add a baby to get started!</p></div>';
+                return;
+            }
+
+            bottles.filter(b => b.status === 'active').forEach(bottle => {
+                const remaining = remainingSeconds(bottle.expiryTimeISO);
+                if (remaining <= 0 && !alarmPlayed.has(bottle.id)) {
+                    playAlarm();
+                    alarmPlayed.add(bottle.id);
+                } else if (remaining > 0 && alarmPlayed.has(bottle.id)) {
+                    alarmPlayed.delete(bottle.id);
+                }
+            });
+
+            dashboard.innerHTML = babies.map(baby => {
+                const babyBottles = bottles.filter(b => b.babyId === baby.id && b.status === 'active');
+                const isCollapsed = collapsedBabies[baby.id];
+                
+                const babyLogs = consumptionLog.filter(log => log.babyId === baby.id);
+                const breastConsumed = babyLogs
+                    .filter(log => log.milkType === 'breast' || log.milkType === 'thawed')
+                    .reduce((sum, log) => sum + log.ounces, 0);
+                const formulaConsumed = babyLogs
+                    .filter(log => log.milkType === 'formula')
+                    .reduce((sum, log) => sum + log.ounces, 0);
+                
+                let bottlesHTML;
+                if (babyBottles.length === 0) {
+                    bottlesHTML = '<p class="no-bottles">No active bottles</p>';
+                } else if (isCollapsed) {
+                    bottlesHTML = babyBottles.map(bottle => {
+                        const remaining = remainingSeconds(bottle.expiryTimeISO);
+                        const countdownClass = getCountdownClass(remaining);
+                        const isExpired = remaining <= 0;
+                        const storage = bottle.currentStorage === 'room' ? 'Room' : 'Fridge';
+                        const milkTypeShort = bottle.milkType === 'formula' ? 'Formula' :
+                                             bottle.milkType === 'breast' ? 'Breast' : 'Thawed';
+
+                        return `
+                            <div class="bottle-compact ${isExpired ? 'expired' : ''}">
+                                <div class="bottle-compact-info">
+                                    <span class="bottle-compact-storage">${milkTypeShort}</span>
+                                    <span class="bottle-compact-storage">${storage}</span>
+                                    <span class="countdown-pill ${countdownClass}">${formatTimeRemaining(remaining)}</span>
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                } else {
+                    bottlesHTML = babyBottles.map(bottle => {
+                        const remaining = remainingSeconds(bottle.expiryTimeISO);
+                        const countdownClass = getCountdownClass(remaining);
+                        const isExpired = remaining <= 0;
+
+                        return `
+                            <div class="bottle-card ${isExpired ? 'expired' : ''}">
+                                <div class="bottle-info">
+                                    <div class="bottle-info-row">
+                                        <span class="bottle-info-label">Milk Type:</span>
+                                        <span class="bottle-info-value">
+                                            ${bottle.milkType === 'formula' ? 'Formula' :
+                                              bottle.milkType === 'breast' ? 'Breast (Fresh)' :
+                                              'Thawed Breast'}
+                                            <button class="edit-btn" onclick="openEditModal('${bottle.id}')" title="Edit">✎</button>
+                                        </span>
+                                    </div>
+                                    <div class="bottle-info-row">
+                                        <span class="bottle-info-label">Amount:</span>
+                                        <span class="bottle-info-value">
+                                            ${bottle.ounces} oz
+                                            <button class="edit-btn" onclick="openEditModal('${bottle.id}')" title="Edit">✎</button>
+                                        </span>
+                                    </div>
+                                    <div class="bottle-info-row">
+                                        <span class="bottle-info-label">Storage:</span>
+                                        <span class="bottle-info-value">${bottle.currentStorage === 'room' ? 'Room' : 'Fridge'}</span>
+                                    </div>
+                                    <div class="bottle-info-row">
+                                        <span class="bottle-info-label">Start Time:</span>
+                                        <span class="bottle-info-value">
+                                            ${formatDisplayTime(bottle.startTimeISO)}
+                                            <button class="edit-btn" onclick="openEditModal('${bottle.id}')" title="Edit">✎</button>
+                                        </span>
+                                    </div>
+                                    <div class="bottle-info-row">
+                                        <span class="bottle-info-label">Expires:</span>
+                                        <span class="bottle-info-value">${formatDisplayTime(bottle.expiryTimeISO)}</span>
+                                    </div>
+                                </div>
+                                <div class="countdown-pill ${countdownClass}">
+                                    ${formatTimeRemaining(remaining)}
+                                </div>
+                                <div class="bottle-actions">
+                                    <button onclick="moveBottleToStorage('${bottle.id}', 'fridge')" 
+                                            ${bottle.currentStorage === 'fridge' ? 'disabled' : ''}>
+                                        Move to Fridge
+                                    </button>
+                                    <button onclick="moveBottleToStorage('${bottle.id}', 'room')"
+                                            ${bottle.currentStorage === 'room' ? 'disabled' : ''}>
+                                        Move to Room
+                                    </button>
+                                    <button class="primary" onclick="markBottle('${bottle.id}', 'used')">
+                                        Mark Fed
+                                    </button>
+                                    <button onclick="markBottle('${bottle.id}', 'discarded')">
+                                        Discard
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                }
+
+                let columnStyle = '';
+                if (baby.colorTag) {
+                    const hexColor = baby.colorTag;
+                    const lightBg = hexToRGBA(hexColor, 0.15);
+                    columnStyle = `style="background: ${lightBg}; border-left-color: ${hexColor};"`;
+                }
+                
+                return `
+                    <div class="baby-column" ${columnStyle}>
+                        <div class="baby-header">
+                            <div class="baby-name-section">
+                                <span class="baby-name">${baby.name}</span>
+                                <div class="consumption-stats">
+                                    <span class="stat-item">🍼 Breast: ${breastConsumed.toFixed(1)} oz</span>
+                                    <span class="stat-item">🥛 Formula: ${formulaConsumed.toFixed(1)} oz</span>
+                                    <button class="reset-btn" onclick="resetConsumption('${baby.id}')" title="Reset consumption log">Reset</button>
+                                </div>
+                            </div>
+                            <button class="collapse-toggle" onclick="toggleCollapse('${baby.id}')" title="${isCollapsed ? 'Expand' : 'Collapse'}">
+                                ${isCollapsed ? '▼' : '▲'}
+                            </button>
+                        </div>
+                        ${bottlesHTML}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderAll() {
+            updateBabyDropdown();
+            updateDashboard();
+        }
+
+        document.getElementById('addBabyForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('babyName').value.trim();
+            const colorTag = document.getElementById('colorTag').value;
+
+            if (name) {
+                babies.push({
+                    id: generateId(),
+                    name: name,
+                    colorTag: colorTag || null
+                });
+
+                e.target.reset();
+                document.querySelectorAll('.color-option').forEach(opt => opt.classList.remove('selected'));
+                renderAll();
+            }
+        });
+
+        document.getElementById('addBottleForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const babyId = document.getElementById('bottleBaby').value;
+            const milkType = document.getElementById('milkType').value;
+            const storage = document.getElementById('storage').value;
+            const ounces = document.getElementById('ounces').value;
+            const startTime = document.getElementById('startTime').value;
+
+            if (babyId && milkType && storage && ounces && startTime) {
+                const startTimeISO = new Date(startTime).toISOString();
+                const expiryTime = calcExpiry(milkType, storage, startTimeISO, null);
+
+                const newBottle = {
+                    id: generateId(),
+                    babyId: babyId,
+                    milkType: milkType,
+                    ounces: parseFloat(ounces),
+                    startTimeISO: startTimeISO,
+                    currentStorage: storage,
+                    expiryTimeISO: expiryTime.toISOString(),
+                    status: 'active'
+                };
+
+                // For all milk types starting at room temperature, initialize tracking fields
+                if (storage === 'room') {
+                    newBottle.roomTempTimeSpent = 0;
+                    newBottle.lastRoomTempStart = startTimeISO;
+                }
+
+                bottles.push(newBottle);
+
+                e.target.reset();
+                document.getElementById('ounces').value = '4';
+                document.getElementById('startTime').value = getCurrentTimeForInput();
+                renderAll();
+            }
+        });
+
+        document.getElementById('startTime').value = getCurrentTimeForInput();
+
+        document.querySelectorAll('.color-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.color-option').forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+                document.getElementById('colorTag').value = this.dataset.color;
+            });
+        });
+
+        renderAll();
+        setInterval(updateDashboard, 1000);
+    </script>
+</body>
+</html>
